@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ErrorController {
 
-    //@GetMapping("/404")
     @RequestMapping(value = "404Error", method = RequestMethod.GET)
     public String notFound(){
+        // TODO: understand why this debug isn't running
         // DEBUG
         System.out.println("DEBUG: ErrorController\n"
             + "\tnotFound()");
