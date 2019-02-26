@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head" />
+<body>
+    <nav th:replace="partials :: navbar" />
+    <h1>Roll Dice</h1>
+    <form action="/roll-dice/" method="post">
+        <div>
+            <label for="guess">Guess a number</label>
+        </div>
+        <div>
+            <input type="number" value="0" />
+        </div>
+        <div>
+            <input id="guess" name="guess" type="submit" />
+        </div>
+    </form>
+</body>
+</html>
