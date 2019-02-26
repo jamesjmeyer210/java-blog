@@ -1,9 +1,8 @@
 package com.codeup.blog.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MathController {
@@ -60,4 +59,16 @@ public class MathController {
             return integerError();
         }
     }
+
+    @GetMapping("/roll-dice")
+    public String rollDice(){
+        return "roll-dice";
+    }
+
+    @RequestMapping(path = "/roll-dice", method = RequestMethod.POST)
+    public String rollDice(@RequestParam(name = "guess") int guess, Model model){
+        model.addAttribute("guess", guess);
+        return "roll-dice";
+    }
+
 }

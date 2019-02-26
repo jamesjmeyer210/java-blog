@@ -4,6 +4,9 @@
 <body>
     <nav th:replace="partials :: navbar" />
     <h1>Roll Dice</h1>
+    <div th:if="${'guess' != null}" />
+        <p>You guessed: ${guess}</p>
+    </div>
     <form action="/roll-dice/" method="post">
         <div>
             <label for="guess">Guess a number</label>
