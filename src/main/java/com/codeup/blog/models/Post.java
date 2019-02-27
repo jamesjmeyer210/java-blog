@@ -11,7 +11,7 @@ public class Post {
     @Id @GeneratedValue
     private long id;
 
-    @Column(nullable = false, length = 64)
+    @Column(nullable = false, length = 64, unique = true)
     private String title;
 
     @Column(nullable = false, length = 2048)
