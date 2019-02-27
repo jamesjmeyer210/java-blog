@@ -12,10 +12,10 @@
         </div>
         <div class="column lg-col-80">
             <div>
-                <h2 th:text="${post.title}" />
+                <h3 th:text="${post.title}" />
             </div>
             <div>
-                <p th:text="${post.content}" />
+                <p th:text="${post.content.substring(0, 256)} + '...'" />
             </div>
         </div>
         <div class="column lg-col-10">
