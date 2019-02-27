@@ -5,7 +5,7 @@
     <nav th:replace="partials :: navbar" />
     <h1>Posts</h1>
     <div th:each="post : ${posts}">
-        <p th:text="${post.title}" />
+        <h2 th:text="${post.title}" />
         <p th:text="${post.content}" />
     </div>
 </body>

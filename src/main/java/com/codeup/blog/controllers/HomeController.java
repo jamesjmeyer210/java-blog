@@ -15,4 +15,8 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/resume")
+    public String resume(){
+        return "site/resume";
+    }
 }

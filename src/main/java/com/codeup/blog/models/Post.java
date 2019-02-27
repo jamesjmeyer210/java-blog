@@ -17,6 +17,10 @@ public class Post {
 
     //private List<Category> categories;
 
+    public Post(){
+        System.out.println("DEBUG: new Post()");
+    }
+
     // Constructor for putting objects in the db
     public Post(String title, String content, List<Category> categories){
         if(title == null || content == null || categories == null){
