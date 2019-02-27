@@ -1,12 +1,22 @@
 package com.codeup.blog.models;
 
+import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity @Table(name = "posts")
 public class Post {
 
+    @Id @GeneratedValue
     private long id;
+
+    @Column(nullable = false, length = 64)
     private String title;
+
+    @Column(nullable = false, length = 2048)
     private String content;
+
     private List<Category> categories;
 
     public Post(String title, String content, List<Category> categories){
