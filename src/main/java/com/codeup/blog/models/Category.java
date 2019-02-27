@@ -11,6 +11,7 @@ public class Category {
     @Column(nullable = false, length = 64, unique = true)
     private String name;
 
+    // Constructor for putting objects in the db
     public Category(String name){
         if(name == null){
             throw new NullPointerException();
@@ -18,6 +19,7 @@ public class Category {
         this.name = name;
     }
 
+    // Constructor for removing objects from the db
     public Category(long id, String name)
         throws NullPointerException
     {

@@ -19,6 +19,7 @@ public class Post {
 
     private List<Category> categories;
 
+    // Constructor for putting objects in the db
     public Post(String title, String content, List<Category> categories){
         if(title == null || content == null || categories == null){
             throw new NullPointerException();
@@ -28,6 +29,7 @@ public class Post {
         this.categories = categories;
     }
 
+    // Constructor for removing objects from the db
     public Post(long id, String title, String content, List<Category> categories)
         throws NullPointerException
     {
