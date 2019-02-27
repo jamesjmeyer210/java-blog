@@ -1,7 +1,5 @@
 package com.codeup.blog.models;
 
-import org.springframework.web.bind.annotation.GetMapping;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class Post {
     @Column(nullable = false, length = 2048)
     private String content;
 
-    private List<Category> categories;
+    //private List<Category> categories;
 
     // Constructor for putting objects in the db
     public Post(String title, String content, List<Category> categories){
@@ -26,7 +24,7 @@ public class Post {
         }
         this.title = title;
         this.content = content;
-        this.categories = categories;
+        //this.categories = categories;
     }
 
     // Constructor for removing objects from the db
@@ -47,9 +45,9 @@ public class Post {
         return this.content;
     }
 
-    public List<Category> getCategories(){
-        return this.categories;
-    }
+//    public List<Category> getCategories(){
+//        return this.categories;
+//    }
 
     public void setTitle(String title){
         this.title = title;
@@ -59,18 +57,18 @@ public class Post {
         this.content = description;
     }
 
-    public void addCategory(Category ctgr){
-        this.categories.add(ctgr);
-    }
+//    public void addCategory(Category ctgr){
+//        this.categories.add(ctgr);
+//    }
 
-    public void removeCategory(Category ctgr){
-        int index = this.categories.indexOf(ctgr);
-        this.removeCategory(index);
-    }
+//    public void removeCategory(Category ctgr){
+//        int index = this.categories.indexOf(ctgr);
+//        this.removeCategory(index);
+//    }
 
-    public void removeCategory(int index){
-        if(this.categories.size() < index){
-            this.categories.remove(index);
-        }
-    }
+//    public void removeCategory(int index){
+//        if(this.categories.size() < index){
+//            this.categories.remove(index);
+//        }
+//    }
 }
