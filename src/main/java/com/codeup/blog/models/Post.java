@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Post {
 
+    private long id;
     private String title;
     private String content;
     private List<Category> categories;
@@ -16,6 +17,15 @@ public class Post {
         this.content = content;
         this.categories = categories;
     }
+
+    public Post(long id, String title, String content, List<Category> categories)
+        throws NullPointerException
+    {
+        this(title, content, categories);
+        this.id = id;
+    }
+
+    public long getId(){return this.id;}
 
     public String getTitle(){
         return this.title;
