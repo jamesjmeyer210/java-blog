@@ -32,14 +32,43 @@ public class PostController {
     }
 
     @RequestMapping(path = "/create", method = RequestMethod.GET)
-    public String create(){
+    public String create(Model model){
+        model.addAttribute("MIN_TITLE_LEN", Post.MIN_TITLE_LEN);
+        model.addAttribute("MAX_TITLE_LEN", Post.MAX_TITLE_LEN);
+        model.addAttribute("MIN_CONTENT_LEN", Post.MIN_CONTENT_LEN);
+        model.addAttribute("MAX_CONTENT_LEN", Post.MAX_CONTENT_LEN);
         return "posts/create";
     }
 
     @RequestMapping(path = "/create", method = RequestMethod.POST)
-    @ResponseBody
-    public String create(@RequestParam(name = "submit") String submit){
-        return "Creating a post..." + submit;
+    public String create(@RequestParam(name = "title") String title,
+                         @RequestParam(name = "content") String content)
+    {
+        // DEBUG
+        System.out.println("DEBUG: create(...)");
+        // END DEBUG
+        try {
+            // The following checks should prevent any exceptions from being thrown
+            if(title.length() <= Post.MIN_TITLE_LEN || title.length() >= Post.MAX_TITLE_LEN)
+            {
+                // DEBUG
+                System.out.println("\tDEBUG: title length out of bounds.");
+                // END DEBUG
+                return "redirect:/create";
+            }else if(content.length() <= Post.MIN_CONTENT_LEN || content.length() >= Post.MAX_CONTENT_LEN) {
+                // DEBUG
+                System.out.println("\tDEBUG: content length out of bounds.");
+                // END DEBUG
+                return "redirect:/create";
+            }
+            Post post = new Post(title, content);
+            this.postDao.save(post);
+        } catch(NullPointerException e){
+            e.printStackTrace();
+            return "redirect:/create";
+        }
+
+        return "redirect:/posts";
     }
 
 }

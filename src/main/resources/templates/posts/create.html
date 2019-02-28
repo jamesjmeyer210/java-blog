@@ -12,10 +12,16 @@
                 </div>
                 <form action="/create" method="post">
                     <div>
-                        <input type="text" name="title" id="title"/>
+                        <label for="title">Title:</label>
                     </div>
                     <div>
-                        <input type="textarea" name="content" id="content"/>
+                        <input id="title" name="title" th:required="required" type="text" th:maxlength="${MAX_TITLE_LEN}" th:minlength="${MIN_TITLE_LEN}"/>
+                    </div>
+                    <div>
+                        <label for="content">Content:</label>
+                    </div>
+                    <div>
+                        <textarea name="content" id="content" cols="128" rows="16" th:required="required" th:minlength="${MIN_CONTENT_LEN}" th:maxlength="${MAX_CONTENT_LEN}"></textarea>
                     </div>
                     <div>
                         <input type="submit" id="btn-new-post" name="btn-new-post" value="Submit New Post" />

@@ -139,18 +139,14 @@ nav {
   border-right-color: transparent;
 }
 
-/* .rotate-45 {
-  transform: rotate(45deg);
+/*
+    *     *     forms   *     *     *
+ */
+
+input:invalid {
+  border: 2px darkred;
 }
 
-.rotate-135 {
-  transform: rotate(135deg);
+input:valid {
+  border: 2px darkblue;
 }
-
-.rotate-225 {
-  transform: rotate(225deg);
-}
-
-.rotate-315 {
-  transform: rotate(315deg);
-} */

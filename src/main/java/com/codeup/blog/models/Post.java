@@ -6,6 +6,11 @@ import java.util.List;
 @Entity @Table(name = "posts")
 public class Post {
 
+    public static final int MIN_TITLE_LEN = 8;
+    public static final int MAX_TITLE_LEN = 64;
+    public static final int MIN_CONTENT_LEN = 256;
+    public static final int MAX_CONTENT_LEN = 2048;
+
     @Id @GeneratedValue
     private long id;
 
@@ -15,28 +20,27 @@ public class Post {
     @Column(nullable = false, length = 2048)
     private String content;
 
-    //private List<Category> categories;
-
     public Post(){
         System.out.println("DEBUG: new Post()");
     }
 
     // Constructor for putting objects in the db
-    public Post(String title, String content, List<Category> categories){
-        if(title == null || content == null || categories == null){
+    public Post(String title, String content){
+        if(title == null || content == null){
             throw new NullPointerException();
         }
         this.title = title;
         this.content = content;
-        //this.categories = categories;
+        System.out.println("DEBUG: new Post(...)");
     }
 
     // Constructor for removing objects from the db
-    public Post(long id, String title, String content, List<Category> categories)
+    public Post(long id, String title, String content)
         throws NullPointerException
     {
-        this(title, content, categories);
+        this(title, content);
         this.id = id;
+        System.out.println("DEBUG: new Post(...)");
     }
 
     public long getId(){return this.id;}
@@ -49,10 +53,6 @@ public class Post {
         return this.content;
     }
 
-//    public List<Category> getCategories(){
-//        return this.categories;
-//    }
-
     public void setTitle(String title){
         this.title = title;
     }
@@ -61,18 +61,4 @@ public class Post {
         this.content = description;
     }
 
-//    public void addCategory(Category ctgr){
-//        this.categories.add(ctgr);
-//    }
-
-//    public void removeCategory(Category ctgr){
-//        int index = this.categories.indexOf(ctgr);
-//        this.removeCategory(index);
-//    }
-
-//    public void removeCategory(int index){
-//        if(this.categories.size() < index){
-//            this.categories.remove(index);
-//        }
-//    }
 }
