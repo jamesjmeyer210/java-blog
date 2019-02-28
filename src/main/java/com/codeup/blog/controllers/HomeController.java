@@ -24,4 +24,9 @@ public class HomeController {
     public String resume(){
         return "site/resume";
     }
+
+    @GetMapping("/contract-req")
+    public String contractReq(){
+        return "redirect:/err/404";
+    }
 }
