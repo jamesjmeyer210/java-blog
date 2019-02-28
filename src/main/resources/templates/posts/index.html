@@ -7,9 +7,7 @@
         <h1 class="text-center">Posts</h1>
     </div>
     <div class="row" th:each="post : ${posts}">
-        <div class="column lg-col-10">
-            <!-- Filler -->
-        </div>
+        <div class="column lg-col-10"></div>
         <div class="column lg-col-80">
             <div>
                 <h3 th:text="${post.title}" />
@@ -17,15 +15,11 @@
             <div>
                 <p th:text="${post.content.substring(0, 256)} + '...'" />
             </div>
-            <form action="/posts/edit" method="post">
-                <input type="hidden" name="post_id" th:value="${post.id}" />
-                <input type="submit" name="delete" value="Delete" />
-                <input type="submit" name="edit" value="Edit" />
-            </form>
+            <div>
+                <a th:href="@{/posts/{id}(id=${post.id})}">Read More</a>
+            </div>
         </div>
-        <div class="column lg-col-10">
-            <!-- Filler -->
-        </div>
+        <div class="column lg-col-10"></div>
     </div>
 </body>
 </html>
