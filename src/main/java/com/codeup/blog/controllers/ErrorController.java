@@ -9,11 +9,6 @@ public class ErrorController {
 
     @RequestMapping(value = "404Error", method = RequestMethod.GET)
     public String notFound(){
-        // TODO: understand why this debug isn't running
-        // DEBUG
-        System.out.println("DEBUG: ErrorController\n"
-            + "\tnotFound()");
-        // END DEBUG
         return "error/404";
     }
 

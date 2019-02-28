@@ -15,6 +15,11 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/about")
+    public String about(){
+        return "redirect:/resume";
+    }
+
     @GetMapping("/resume")
     public String resume(){
         return "site/resume";
