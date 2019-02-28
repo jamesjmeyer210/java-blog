@@ -32,9 +32,8 @@ public class PostController {
     }
 
     @RequestMapping(path = "/create", method = RequestMethod.GET)
-    @ResponseBody
     public String create(){
-        return "Viewing create";
+        return "posts/create";
     }
 
     @RequestMapping(path = "/create", method = RequestMethod.POST)
