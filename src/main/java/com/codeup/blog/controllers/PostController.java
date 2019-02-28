@@ -1,6 +1,7 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.dao.PostRepository;
+import com.codeup.blog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +22,13 @@ public class PostController {
     }
 
     @RequestMapping(path = "/posts/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public String posts(@PathVariable int id){
-        return "Viewing post: " + id;
+    public String posts(@PathVariable long id, Model model){
+        Post post = postDao.findOne(id);
+        if(post == null){
+            return "error/404";
+        }
+        model.addAttribute("post", post);
+        return "posts/show";
     }
 
     @RequestMapping(path = "/create", method = RequestMethod.GET)
