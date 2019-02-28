@@ -3,6 +3,54 @@
 <head th:replace="partials :: head" />
 <body>
     <nav th:replace="partials :: navbar" />
-    <h1>James' Blog</h1>
+    <header class="text-center">
+        <div class="main-header">
+            <h1>James Meyer</h1>
+        </div>
+        <div class="sub-header">
+            <h2>Software Engineer</h2>
+            <h2>Mathematician</h2>
+            <h2>Designer</h2>
+        </div>
+    </header>
+
+    <main class="container text-right">
+        <div class="row">
+            <div class="column xs-col-25 sm-col-25 md-col-30 lg-col-40"></div>
+            <div class="column xs-col-50 sm-col-50 md-col-40 lg-col-20">
+                <div class="nav-link-panel" id="r0-c2">
+                    <a class="nav-link" href="contract-req" id="inlink-0">Contract Request</a>
+                </div>
+            </div>
+            <div class="column xs-col-25 sm-col-25 md-col-30 lg-col-40"></div>
+        </div>
+        <div class="row">
+            <div class="column hide-if-xs hide-if-sm md-col-10 lg-col-30"></div>
+            <div class="column xs-col-50 sm-col-50 md-col-40 lg-col-20">
+                <div class="nav-link-panel" id="r1-c1">
+                    <a class="nav-link" href="projects" id="inlink-1">Projects</a>
+                </div>
+            </div>
+            <div class="column xs-col-50 sm-col-50 md-col-40 lg-col-20">
+                <div class="nav-link-panel" id="r1-c2">
+                    <a class="nav-link" href="posts" id="inlink-2">Blog</a>
+                </div>
+            </div>
+            <div class="column hide-if-xs hide-if-sm md-col-10 lg-col-30"></div>
+        </div>
+        <div class="row">
+            <div class="column xs-col-25 sm-col-25 md-col-30 lg-col-40"></div>
+            <div class="column xs-col-50 sm-col-50 md-col-40 lg-col-20">
+                <div class="nav-link-panel" id="r2-c2">
+                    <a class="nav-link" href="about" id="inlink-3">About</a>
+                </div>
+            </div>
+            <div class="column xs-col-25 sm-col-25 md-col-30 lg-col-20"></div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Footer moves the reader back to the header -->
+    </footer>
 </body>
 </html>

@@ -20,12 +20,6 @@ public class PostController {
         return "posts/index";
     }
 
-//    @RequestMapping(path = "/posts", method = RequestMethod.GET)
-//    @ResponseBody
-//    public String posts(){
-//        return "Viewing all posts";
-//    }
-
     @RequestMapping(path = "/posts/{id}", method = RequestMethod.GET)
     @ResponseBody
     public String posts(@PathVariable int id){
