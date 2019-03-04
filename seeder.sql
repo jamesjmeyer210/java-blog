@@ -1,4 +1,4 @@
-USE adlister_db;
+USE jamesblog_db;
 
 INSERT INTO posts (title, content)
 VALUES ("Lorem ipsum dolor", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer semper facilisis lorem vitae iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet arcu sed metus commodo porta. In nec finibus lacus, id tristique odio. Duis laoreet eu lorem ac euismod. Pellentesque vitae orci feugiat, feugiat nulla nec, molestie sapien. Aliquam maximus quam sit amet lacus pulvinar, sit amet varius lectus tempor. Morbi lobortis mattis leo, et tristique arcu blandit non. Vestibulum rutrum vulputate eros, vitae volutpat ante facilisis et. Integer et libero mattis, sagittis sem eu, tristique velit. Nullam vitae erat metus. Aenean facilisis enim eget orci aliquet, consequat finibus dui dapibus. Sed vitae tellus sapien. Suspendisse ultrices non neque vel commodo."),

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Entity @Table(name = "posts")
+@Entity @Table(name = "users")
 public class User {
 
     public static final int MIN_PASSWORD_LEN = 8;
@@ -30,6 +30,15 @@ public class User {
 
     public User(){
         // for the spring db deserialization
+    }
+
+    public User(String username, String email, String password)
+            throws Exception
+    {
+        this.setUsername(username);
+        this.setEmail(email);
+        this.setPassword(password);
+        /* DEBUG */System.out.println("DEBUG: new User(...)");
     }
 
     public void setId(long id){

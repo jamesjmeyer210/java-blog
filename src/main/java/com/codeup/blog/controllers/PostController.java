@@ -2,17 +2,25 @@ package com.codeup.blog.controllers;
 
 import com.codeup.blog.dao.PostRepository;
 import com.codeup.blog.models.Post;
+import com.codeup.blog.models.User;
+import com.codeup.blog.services.EmailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @Controller
 public class PostController {
 
     private final PostRepository postDao;
+    @Autowired
+    private final EmailService emailService;
 
-    public PostController(PostRepository pd){
+    public PostController(PostRepository pd, EmailService es){
         this.postDao = pd;
+        this.emailService = es;
     }
 
     @GetMapping("/posts")
@@ -42,6 +50,7 @@ public class PostController {
     @RequestMapping(path = "/create", method = RequestMethod.GET)
     public String create(Model model){
         model = addPostConstants(model);
+
         return "posts/create";
     }
 
@@ -61,9 +70,23 @@ public class PostController {
             }
             Post post = new Post(title, content);
             this.postDao.save(post);
+            // TODO: user value is currently hardcoded
+            /* DEBUG */System.out.println("DEBUG: post saved to database.");
+            User admin = new User(
+                    "admin",
+                    "9b0989da44-2970db@inbox.mailtrap.io",
+                    "password123"
+            );
+            emailService.prepareAndSend(
+                    admin,
+                    "New Post: " + title,
+                    "You created a new post on " + new Date().getTime() + ".\n"
+            );
         } catch(NullPointerException e){
             e.printStackTrace();
             return "redirect:/create";
+        } catch(Exception e){
+            e.printStackTrace();
         }
 
         return "redirect:/posts";

@@ -18,6 +18,8 @@ public class EmailService {
     private String from;
 
     public void prepareAndSend(User user, String subject, String body){
+        /* DEBUG */System.out.println("\tDEBUG: EmailService:");
+        /* DEBUG */System.out.println("\tDEBUG: prepareAndSend(...)");
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
         msg.setTo(user.getEmail());
