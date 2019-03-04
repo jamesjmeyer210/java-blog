@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head" />
+<body>
+<nav th:replace="partials :: navbar" />
+<div class="container">
+    <div class="row">
+        <div class="column lg-col-10"></div>
+        <div class="column lg-col-80">
+            <div>
+                <h1>Edit The Post</h1>
+            </div>
+            <form th:action="@{/posts/edit/} + ${post.id}" th:method="POST">
+                <div>
+                    <label for="title">Title:</label>
+                </div>
+                <div>
+                    <input id="title" name="title" type="text"
+                           th:required="required"
+                           th:maxlength="${MAX_TITLE_LEN}"
+                           th:minlength="${MIN_TITLE_LEN}"
+                           th:value="${post.title}"/>
+                </div>
+                <div>
+                    <label for="content">Content:</label>
+                </div>
+                <div>
+                    <textarea name="content" id="content" cols="128" rows="16"
+                              th:required="required"
+                              th:minlength="${MIN_CONTENT_LEN}"
+                              th:maxlength="${MAX_CONTENT_LEN}"
+                              th:text="${post.content}"></textarea>
+                </div>
+                <div>
+                    <input type="submit" id="btn-edit-post" name="btn-edit-post" value="Edit Post" />
+                </div>
+            </form>
+        </div>
+        <div class="column lg-col-10"></div>
+    </div>
+</div>
+</body>
+</html>
