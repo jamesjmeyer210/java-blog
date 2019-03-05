@@ -1,6 +1,7 @@
 package com.codeup.blog.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity @Table(name = "posts")
@@ -19,6 +20,17 @@ public class Post {
 
     @Column(nullable = false, length = 2048)
     private String content;
+
+    @ManyToOne @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="posts_tags",
+            joinColumns={@JoinColumn(name="post_id")},
+            inverseJoinColumns={@JoinColumn(name="tag_id")}
+    )
+    private List<Tag> tags;
 
     public Post(){
         System.out.println("DEBUG: new Post()");
@@ -53,12 +65,36 @@ public class Post {
         return this.content;
     }
 
+    public User getUser() {
+        return this.user;
+    }
+
+    public List<Tag> getTags(){
+        return this.tags;
+    }
+
+    public void setUser(User user){
+        this.user = user;
+    }
+
     public void setTitle(String title){
         this.title = title;
     }
 
     public void setContent(String description){
         this.content = description;
+    }
+
+    public void setTags(List<Tag> tags){
+        if(tags == null){
+            this.tags = new ArrayList<>(0);
+        }else{
+            this.tags = tags;
+        }
+    }
+
+    public void addTag(Tag tag){
+        this.tags.add(tag);
     }
 
 }

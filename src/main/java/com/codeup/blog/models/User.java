@@ -1,6 +1,10 @@
 package com.codeup.blog.models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,6 +31,9 @@ public class User {
     private String email;
     @Column(nullable = false, length = MAX_PASSWORD_LEN)
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
 
     public User(){
         // for the spring db deserialization
@@ -81,6 +88,14 @@ public class User {
         }
     }
 
+    public void setPosts(List<Post> posts){
+        if(posts == null){
+            this.posts = new ArrayList<>(0);
+        }else{
+            this.posts = posts;
+        }
+    }
+
     public long getId(){
         return this.id;
     }
@@ -91,5 +106,9 @@ public class User {
 
     public String getEmail(){
         return this.email;
+    }
+
+    public List<Post> getPosts(){
+        return this.posts;
     }
 }

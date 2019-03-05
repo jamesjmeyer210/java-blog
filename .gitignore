@@ -5,6 +5,9 @@ HELP.md
 ### Private ###
 src/main/resources/application.properties
 
+### VIM ###
+.swp
+
 ### STS ###
 .apt_generated
 .classpath

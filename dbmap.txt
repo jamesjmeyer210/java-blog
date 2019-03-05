@@ -1,0 +1,21 @@
+
+
+### posts ###
+[A] id
+[B] title
+[C] content
+[K] user_id -> [E]
+
+### users ###
+[E] id
+[F] email
+[G] password
+[H] username
+
+### tags ###
+[I] id
+[J] name
+
+### tags_posts ###
+[L] tag_id -> [I]
+[M] post_id -> [A]
