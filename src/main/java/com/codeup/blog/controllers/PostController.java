@@ -1,6 +1,8 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.dao.PostRepository;
+import com.codeup.blog.dao.TagRepository;
+import com.codeup.blog.dao.UserRepository;
 import com.codeup.blog.models.Post;
 import com.codeup.blog.models.User;
 import com.codeup.blog.services.EmailService;
@@ -15,11 +17,16 @@ import java.util.Date;
 public class PostController {
 
     private final PostRepository postDao;
+    private final TagRepository tagDao;
+    private final UserRepository userDao;
+
     @Autowired
     private final EmailService emailService;
 
-    public PostController(PostRepository pd, EmailService es){
+    public PostController(PostRepository pd, TagRepository td, UserRepository ud, EmailService es){
         this.postDao = pd;
+        this.tagDao = td;
+        this.userDao = ud;
         this.emailService = es;
     }
 
@@ -72,11 +79,12 @@ public class PostController {
             this.postDao.save(post);
             // TODO: user value is currently hardcoded
             /* DEBUG */System.out.println("DEBUG: post saved to database.");
-            User admin = new User(
-                    "admin",
-                    "9b0989da44-2970db@inbox.mailtrap.io",
-                    "password123"
-            );
+//            User admin = new User(
+//                    "admin",
+//                    "9b0989da44-2970db@inbox.mailtrap.io",
+//                    "password123"
+//            );
+            User admin = userDao.findOne(1L);
             emailService.prepareAndSend(
                     admin,
                     "New Post: " + title,
