@@ -39,6 +39,13 @@ public class User {
         // for the spring db deserialization
     }
 
+    public User(User copy){
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
     public User(String username, String email, String password)
             throws Exception
     {
@@ -107,6 +114,8 @@ public class User {
     public String getEmail(){
         return this.email;
     }
+
+    public String getPassword(){return this.password;}
 
     public List<Post> getPosts(){
         return this.posts;

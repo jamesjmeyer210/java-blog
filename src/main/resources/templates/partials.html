@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:fragment="head">
     <meta charset="UTF-8" />
     <title>James' Blog</title>
@@ -21,13 +22,24 @@
             <li class="nav-inline">
                 <a class="nav-link" href="/posts">Archive</a>
             </li>
-            <!--<li class="nav-inline">-->
-                <!--<a class="nav-link" href="/resume">Resume</a>-->
-            <!--</li>-->
             <li class="nav-inline">
                 <a class="nav-link" href="/create">New Post</a>
             </li>
+            <!-- Login form -->
+            <li>
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                </form>
+            </li>
         </ul>
     </nav>
+    <!-- ... -->
+    <div sec:authorize="isAuthenticated()">
+        This content is only shown to authenticated users.
+
+        User ID: <span th:text="${#authentication.principal.id}"/>
+        Username: <span th:text="${#authentication.principal.username}"/>
+        Email: <span th:text="${#authentication.principal.email}"/>
+    </div>
 </body>
 </html>
