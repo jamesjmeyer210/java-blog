@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Entity @Table(name = "users")
 public class User {
@@ -22,6 +23,8 @@ public class User {
     private Pattern pattern;
     @Transient
     private Matcher matcher;
+    @Transient
+    private PasswordEncoder encoder;
 
     @Id @GeneratedValue
     private long id;
@@ -39,11 +42,15 @@ public class User {
         // for the spring db deserialization
     }
 
-    public User(User copy){
-        id = copy.id;
-        email = copy.email;
-        username = copy.username;
-        password = copy.password;
+    public User(User copy) {
+        try {
+            this.setId(copy.id);
+            this.setEmail(copy.email);
+            this.setUsername(copy.username);
+            this.setPassword(copy.password);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public User(String username, String email, String password)
@@ -91,7 +98,7 @@ public class User {
         if(password.length() < MIN_PASSWORD_LEN || password.length() > MAX_PASSWORD_LEN){
             throw new Exception();
         }else{
-            this.password = password;
+            this.password = encoder.encode(password);
         }
     }
 

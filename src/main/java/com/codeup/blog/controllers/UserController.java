@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
     private Users users;
-    private PasswordEncoder passwordEncoder;
+    //private PasswordEncoder passwordEncoder;
 
-    public UserController(Users users, PasswordEncoder passwordEncoder) {
+    public UserController(Users users) {
         this.users = users;
-        this.passwordEncoder = passwordEncoder;
+        //this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/sign-up")
@@ -27,12 +27,12 @@ public class UserController {
 
     @PostMapping("/sign-up")
     public String saveUser(@ModelAttribute User user){
-        String hash = passwordEncoder.encode(user.getPassword());
-        try {
-            user.setPassword(hash);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        //String hash = passwordEncoder.encode(user.getPassword());
+//        try {
+//            user.setPassword(hash);
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
         users.save(user);
         return "redirect:/login";
     }
