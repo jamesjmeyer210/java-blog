@@ -8,10 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PostRepository extends CrudRepository<Post,Long> {
-
-    //@Query("from posts where posts.id = ?")
-    //Post getPostById(@Param("id") long id);
-
+    
     @Query("from Post p where p.title like %:target%")
     List<Post> findByTitleLike(@Param("target") String target);
 
